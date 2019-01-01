@@ -159,8 +159,12 @@ MonoBehaviour:
   - {fileID: 1105510440527222, guid: 708b4db9329335b4b9da0163db0a1424, type: 2}
   wall: {fileID: 1001687116812878, guid: 99ba9ce346c9ea24ebb4394538922825, type: 2}
   createdTiles: []
-  tileAmount: 50
+  tileAmount: 100
   tileSize: 16
+  waitTime: 0
+  chanceUp: 0.3
+  chanceRight: 0.5
+  chanceDown: 0.75
 --- !u!4 &1386182447
 Transform:
   m_ObjectHideFlags: 0
@@ -168,7 +172,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1386182445}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.3259535, y: 1.411166, z: -1.4375}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
