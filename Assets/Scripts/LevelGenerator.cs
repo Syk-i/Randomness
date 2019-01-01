@@ -15,7 +15,20 @@ public class LevelGenerator : MonoBehaviour {
     public float chanceUp;
     public float chanceRight;
     public float chanceDown;
-   
+    //Wall Gen
+
+    public float minY = 9999999;
+    public float maxY = 0;
+
+    public float minX = 9999999;
+    public float maxX = 0;
+
+    public float xAmount;
+    public float yAmount;
+
+    public float extraWallX;
+    public float extraWallY;
+
     
     
 
@@ -35,6 +48,12 @@ public class LevelGenerator : MonoBehaviour {
             CreateTile(tile);
             CallMoveGen(dir);
             yield return new WaitForSeconds(waitTime);
+
+
+            if (i == tileAmount - 1)
+            {
+                Finish();
+            }
         }
         yield return 0;
     }	
@@ -105,5 +124,53 @@ public class LevelGenerator : MonoBehaviour {
         }
         
 
+    }
+
+    void Finish()
+    {
+        CreateWallValues();
+        CreateWalls();
+    }
+
+    void CreateWallValues()
+    {
+        for (int i = 0; i < createdTiles.Count; i++)
+        {
+            if(createdTiles[i].y < minY)
+            {
+                minY = createdTiles[i].y;
+            }
+            if(createdTiles[i].y > maxY)
+            {
+                maxY = createdTiles[i].y;
+            }
+            if(createdTiles[i].x < minX)
+            {
+                minX = createdTiles[i].x;
+            }
+            if (createdTiles[i].x >maxX)
+            {
+                maxX = createdTiles[i].x;
+            }
+
+
+            xAmount = ((maxX - minX) / tileSize) + extraWallX;
+            yAmount = ((maxY - minY) / tileSize) + extraWallY;
+        }
+
+    }
+
+    void CreateWalls()
+    {
+        for (int x = 0; x < xAmount; x++)
+        {
+            for (int y = 0; y  < yAmount; y ++)
+            {
+                if (!createdTiles.Contains(new Vector3((minX - (extraWallX * tileSize) / 2) + (x * tileSize), (minY - (extraWallY * tileSize) / 2) + (y * tileSize))))
+                {
+                    Instantiate(wall, new Vector3((minX - (extraWallX * tileSize) / 2) + (x * tileSize), (minY - (extraWallY * tileSize) / 2) + (y * tileSize)), transform.rotation);
+                }
+            }
+        }
     }
 }
