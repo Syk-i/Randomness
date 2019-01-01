@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4288151377215922}
   - component: {fileID: 212771027442986678}
   m_Layer: 0
-  m_Name: FloorTile_1
+  m_Name: 0x72_16x16DungeonTileset.v4_6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
